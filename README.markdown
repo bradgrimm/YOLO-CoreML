@@ -1,10 +1,13 @@
 # YOLO with Core ML
 
-This repo was forked and modified from [hollance/YOLO-CoreML-MPSNNGraph](https://github.com/hollance/YOLO-CoreML-MPSNNGraph). Some changes I made: 
+This repo was forked and modified from [syshen/YOLO-CoreML](https://github.com/syshen/YOLO-CoreML). Some changes I made: 
 
-1. Only keep CoreML since that is the only part I am interested at
-2. Use YOLO2 pre-trained model instead of TinyYOLO. YOLO2 pre-trained model provides more classes and more accurate than Tiny-YOLO. It is slower, but it can recognizes more stuff. 
-3. Drop yad2k converter. I use darkflow to convert YOLO pre-trained models from darknet format to tensorflow. And use tf-coreml to convert from tensorflow to CoreML.
+1. Updated to work with [Yolo v5](https://github.com/ultralytics/yolov5).
+2. Added comments that explain how to grab stride, anchors, and other data from an exported model. 
+3. Updated the code to work on all output layers instead of just the first one.
+
+
+This works on their model as of June 23, 2021.
 
 
 ## About YOLO object detection

@@ -122,10 +122,13 @@ class ViewController: UIViewController {
   }
 
   func visionRequestDidComplete(request: VNRequest, error: Error?) {
-    if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-       let features = observations.first?.featureValue.multiArrayValue {
-
-      let boundingBoxes = yolo.computeBoundingBoxes(features: features)
+    if let observations = request.results as? [VNCoreMLFeatureValueObservation]
+    {
+      var allFeatures : [MLMultiArray] = []
+      for observation in observations {
+        allFeatures.append(observation.featureValue.multiArrayValue!)
+      }
+      let boundingBoxes = yolo.computeBoundingBoxes(layers: allFeatures)
       let elapsed = CACurrentMediaTime() - startTimes.remove(at: 0)
       showOnMainThread(boundingBoxes, elapsed)
     }
@@ -170,7 +173,7 @@ class ViewController: UIViewController {
         let scaleX = width / CGFloat(YOLO.inputWidth)
         let scaleY = height / CGFloat(YOLO.inputHeight)
         let top = (view.bounds.height - height) / 2
-
+    
         // Translate and scale the rectangle to our own coordinate system.
         var rect = prediction.rect
         rect.origin.x *= scaleX
@@ -178,7 +181,7 @@ class ViewController: UIViewController {
         rect.origin.y += top
         rect.size.width *= scaleX
         rect.size.height *= scaleY
-
+        
         // Show the bounding box.
         let label = String(format: "%@ %.1f", labels[prediction.classIndex], prediction.score * 100)
         let color = colors[prediction.classIndex]
