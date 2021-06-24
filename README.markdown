@@ -1,5 +1,7 @@
 # YOLO with Core ML
 
+__If you want to use this code. You will need to update a few variables for your model. See YOLO.swift and Helpers.swift for more details.__
+
 This repo was forked and modified from [syshen/YOLO-CoreML](https://github.com/syshen/YOLO-CoreML). Some changes I made: 
 
 1. Updated to work with [Yolo v5](https://github.com/ultralytics/yolov5).
