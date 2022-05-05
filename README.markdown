@@ -8,11 +8,13 @@ This repo was forked and modified from [syshen/YOLO-CoreML](https://github.com/s
 2. Added comments that explain how to grab stride, anchors, and other data from an exported model. 
 3. Updated the code to work on all output layers instead of just the first one.
 
+<b>This works on their model as of June 23, 2021.</b>
 
-This works on their model as of June 23, 2021.
+A working example model can be found [here](https://github.com/bradgrimm/YOLO-CoreML/blob/master/Models/2021_06_21.pt). But do note that this model was trained to predict Lego pieces not the same labels as in syshen. And there have been changes in this repository that aren't compatible with syshen's models:
+1. Label names have been changed in [Helpers.swift](https://github.com/bradgrimm/YOLO-CoreML/blob/master/YOLO-CoreML/YOLO-CoreML/Helpers/Helpers.swift )
+2. Layers are named differently (now they are _714, _727, _740) in [Yolo.swift](https://github.com/bradgrimm/YOLO-CoreML/blob/master/YOLO-CoreML/YOLO-CoreML/YOLO.swift)
 
-An example model can be found [here](https://github.com/bradgrimm/YOLO-CoreML/blob/master/Models/2021_06_21.pt).
-
+At a minimum you will likely have to change the label names to be compatible with your model.
 
 ## About YOLO object detection
 
