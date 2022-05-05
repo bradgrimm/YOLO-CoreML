@@ -11,6 +11,8 @@ This repo was forked and modified from [syshen/YOLO-CoreML](https://github.com/s
 
 This works on their model as of June 23, 2021.
 
+An example model can be found [here](https://github.com/bradgrimm/YOLO-CoreML/blob/master/Models/2021_06_21.pt).
+
 
 ## About YOLO object detection
 
